@@ -60,7 +60,7 @@ function BookScreen({ match }) {
 
                             <ListGroup.Item>
                                 <div className="d-grid gap-2">
-                                    <Link to='/' className='btn btn-danger my-3'>Edit book</Link>
+                                    <Link to={`/book/update/${match.params.id}`} className='btn btn-danger my-3'>Edit book</Link>
                                 </div>
                                 <Link to='/' onClick={deleteBook} className='btn btn-danger my-3'>Delete</Link>
 

@@ -25,7 +25,7 @@ def getRoutes(request):
 
         '/api/book/create/',
         '/api/books/delete/<id>/',
-        '/api/book/<update>/<id>',
+        '/api/book/update/<id>',
     ]
 
     return Response(routes)
@@ -82,5 +82,13 @@ def addBook(request):
 def updateBook(request, pk):
     try: 
         book = Book.objects.get(_id=pk)
+        book_data = request.data
+        book_serializer = BookSerializer(data=book_data)
+        if book_serializer.is_valid():
+            book = book_serializer
+            book.save()
+            return JsonResponse(book_serializer.data, status=status.HTTP_201_CREATED)
+
     except Book.DoesNotExist: 
-        return JsonResponse({'message': 'The book does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+        return JsonResponse({'message': 'The book does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        

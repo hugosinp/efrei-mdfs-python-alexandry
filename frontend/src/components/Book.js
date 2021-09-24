@@ -19,8 +19,7 @@ function Book({ book }) {
                         <strong>{book.name}</strong>
                         <p>{book.author}</p>
                     </Card.Title>
-                </Link>    
-
+                </Link>
             </Card.Body>
 
         </Card>

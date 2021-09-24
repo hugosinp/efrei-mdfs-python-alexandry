@@ -14,6 +14,7 @@ function App() {
       <main>
         <Route path='/' component={HomeScreen} exact />
         <Route path='/books/:id' component={BookScreen} />
+        <Route path='/book/update/:id' component={EditScreen} />
         <Route path='/create' component={AddScreen} />
       </main>
       <Footer />
