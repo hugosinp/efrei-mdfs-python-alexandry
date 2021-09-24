@@ -10,7 +10,7 @@ class Book(models.Model):
     category = models.CharField(max_length=200, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    #image = 
+    image = models.ImageField(null=True, blank=True)
     price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     countInStock = models.IntegerField(null=True, blank=True, default=0)
 
