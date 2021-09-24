@@ -86,7 +86,7 @@ def updateBook(request, pk):
         book_serializer = BookSerializer(data=book_data)
         if book_serializer.is_valid():
             book = book_serializer
-            book.save()
+            book = book.save()
             return JsonResponse(book_serializer.data, status=status.HTTP_201_CREATED)
 
     except Book.DoesNotExist: 
