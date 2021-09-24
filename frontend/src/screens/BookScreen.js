@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image,ListGroup, Button, Card, Container, Form, ListGroupItem } from 'react-bootstrap'
-
-import Book from '../components/Book'
+import { Row, Col, ListGroup, Container } from 'react-bootstrap'
 
 
 function BookScreen({ match }) {
@@ -12,7 +10,7 @@ function BookScreen({ match }) {
     useEffect(() => {
 
         async function fetchBook(){
-            const { data } = await axios.get(`/api/books/${match.params.id}`)
+            const { data } = await axios.get(`http://localhost:8000/api/books/${match.params.id}`)
             setBook(data)
         }
 
@@ -21,7 +19,7 @@ function BookScreen({ match }) {
     }, [])
 
     async function deleteBook(){
-        const { data } = await axios.delete(`api/books/delete/${match.params.id}`)
+        const { data } = await axios.delete(`http://localhost:8000/api/books/delete/${match.params.id}`)
         deleteBook(data)
         window.location.reload()
         alert("Book deleted")
@@ -61,20 +59,8 @@ function BookScreen({ match }) {
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Row>
-                                    <Col>Status :</Col>
-                                    <Col>
-                                        {book.countInStock > 0 ? 'In Stock' : 'Out of Stock'} 
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-
-
-                            <ListGroup.Item>
                                 <div className="d-grid gap-2">
-                                    <Button type='button'>
-                                        Modify Book
-                                    </Button>
+                                    <Link to='/' className='btn btn-danger my-3'>Edit book</Link>
                                 </div>
                                 <Link to='/' onClick={deleteBook} className='btn btn-danger my-3'>Delete</Link>
 

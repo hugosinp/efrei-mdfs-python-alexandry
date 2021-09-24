@@ -21,10 +21,6 @@ function Book({ book }) {
                     </Card.Title>
                 </Link>    
 
-                <Card.Text as="h5">
-                    Qty : {book.countInStock}
-                </Card.Text>
-
             </Card.Body>
 
         </Card>
