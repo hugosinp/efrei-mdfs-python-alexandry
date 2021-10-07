@@ -19,7 +19,7 @@ function BookScreen({ match }) {
     }, [])
 
     async function deleteBook(){
-        const { data } = await axios.delete(`http://localhost:8000/api/books/delete/${match.params.id}`)
+        const { data } = await axios.delete(`http://localhost:8000/api/book/delete/${match.params.id}`)
         deleteBook(data)
         window.location.reload()
         alert("Book deleted")

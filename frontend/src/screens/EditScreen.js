@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Container, Form, Col, Row, Button, InputGroup } from 'react-bootstrap'
+import { Container, Form, Col, Row, Button } from 'react-bootstrap'
 
 function EditScreen({ match }) {
 
@@ -12,7 +12,7 @@ function EditScreen({ match }) {
         date:"",
         description:"",
         price:"",
-        image:""
+        image:"",
     })
 
     function handle(e){
@@ -22,18 +22,15 @@ function EditScreen({ match }) {
         console.log(newData)
     }
 
-    function submit(e){
+    async function submit(e){
         e.preventDefault()
-        axios.put(url, {
+        await axios.put(url, {
             name: data.name,
             author: data.author,
             category: data.category,
             date: data.date,
             description: data.description,
             price: data.price,
-        })
-        .then(res=> {
-            console.log(res.data)
         })
 
         alert("Book Edited !")
@@ -48,7 +45,7 @@ function EditScreen({ match }) {
                         <Form.Group as={Col} md="4">
                             <Form.Label>Book name</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="name"
                                 value={data.name}
@@ -57,7 +54,6 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Author</Form.Label>
                             <Form.Control
-                                required
                                 onChange={(e)=>handle(e)}
                                 id="author"
                                 value={data.author}
@@ -66,7 +62,7 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Category</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="category"
                                 value={data.category}
@@ -75,7 +71,7 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Published Date</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="date"
                                 value={data.date}
@@ -84,7 +80,7 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Description</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="description"
                                 value={data.description}
@@ -93,7 +89,7 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Price</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="price"
                                 value={data.price}
@@ -102,7 +98,7 @@ function EditScreen({ match }) {
                             />
                         <Form.Label>Image</Form.Label>
                             <Form.Control
-                                required
+                                
                                 onChange={(e)=>handle(e)}
                                 id="image"
                                 value={data.image}
